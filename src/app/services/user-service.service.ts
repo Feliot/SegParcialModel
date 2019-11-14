@@ -16,11 +16,11 @@ export class UserServiceService {
   constructor(
     // IMPORETANTE: para poder usar AngularFireAuth hay que importar
     // el modulo AngularFireAuthModule en app.module
-    private afAuth: AngularFireAutt,
+    private afAuth: AngularFireAuth,
     private db: AngularFirestore,
     private mirouter: Router) {
       if (localStorage.getItem('email')) {
-        this.cargarUsuario('', localStorage.getItem('email').toString());
+        this.cargarUsuario(localStorage.getItem('email').toString());
         console.log('constructor', localStorage.getItem('email').toString());
       }
   }
@@ -29,7 +29,7 @@ return new Promise((resolve, reject) => {
     resolve(this.getAuth()
     .subscribe(user => {
       if (user) {
-        this.cargarUsuario(user.displayName, user.email);
+        this.cargarUsuario(user.email);
         console.log('Usuariocargardo', ruta, this.mirouter.url);
         this.mirouter.navigate([ruta]);
       } else {
