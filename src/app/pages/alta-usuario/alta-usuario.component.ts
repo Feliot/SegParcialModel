@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UsuariosServiceService } from 'src/app/services/usuarios-service.service';
+import { miUsuario, Usuario } from 'src/app/models/usuario';
 
 @Component({
   selector: 'app-alta-usuario',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./alta-usuario.component.css']
 })
 export class AltaUsuarioComponent implements OnInit {
+  usuarios:Usuario[];
+  tiposdeusuarios=['administrador','alumno', 'profesor'];
 
-  constructor() { }
+  constructor(private sUsers: UsuariosServiceService) { }
 
   ngOnInit() {
+      this.sUsers.GetUsers().subscribe(
+        usuarios => this.usuarios =usuarios
+      );
   }
 
 }

@@ -1,3 +1,8 @@
+export interface Roles{
+    alumno?: boolean;
+    profesor?:boolean;
+    administrador?:boolean;
+}
 export interface Usuario {
     id?: string;
     email?: string;
@@ -5,7 +10,7 @@ export interface Usuario {
     tipo?: string;
 }
 export class miUsuario implements Usuario {
-    constructor(public email?: string, public clave?: string, public tipo?: string){
+    constructor(public id?:string,public email?: string, public clave?: string, public tipo?: string){
 
     }
 }

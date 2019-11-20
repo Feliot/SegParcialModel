@@ -1,11 +1,12 @@
 <mat-card class="example-card">
   <form class="example-form">
-  <mat-form-field class="example-full-width">
+<!--   <mat-form-field class="example-full-width">
           <input matInput placeholder="Ingresar con:" disabled value="Email y Contraseña">
-  </mat-form-field>
-  <br>
-     <!--  <input  placeholder="email" type="text" id="email1"  [(ngModel)]="email" name="email" required> -->
-   <!--    <input  placeholder="password" type="password" [(ngModel)]="password" name="password" required> -->
+  </mat-form-field> 
+ <br>-->
+  <H2>Login</H2>
+ 
+
    <mat-form-field>
           <input matInput placeholder="email"   [(ngModel)]="email" required name="email">
   </mat-form-field>
@@ -13,7 +14,7 @@
    <mat-form-field>
               <input matInput placeholder="password"  type="password" [(ngModel)]="password" required name="password">
   </mat-form-field>
-  <app-captcha (resolved)="resolved($event)" (bactivate)="activar($event)"></app-captcha>
+<!--   <app-captcha (resolved)="resolved($event)" (bactivate)="activar($event)"></app-captcha>
      <br>
      <div *ngIf="bactivate; else elseBlock">
       <button mat-raised-button color="primary" (click)="onSubmitLogin()" >
@@ -22,16 +23,20 @@
      <ng-template #elseBlock>
       <button mat-raised-button color="Disabled">
           <span>Loguear  </span><mat-icon>email</mat-icon></button>
-     </ng-template>
+     </ng-template> -->
+     <br>
+     <button mat-raised-button color="primary" (click)="onSubmitLogin()" >
+        <span>Loguear  </span><mat-icon>email</mat-icon></button>
 
   <br>
   <span class="errormje">{{ msjerror }}</span>
    <br>
   <button mat-raised-button color="warn" (click)="onSubmitLoginPublic()"><span>Ingreso Público </span><mat-icon>public</mat-icon></button>
   <br>
-  <span><button mat-button  [routerLink]="['../register']">
+  <br>
+  <span><a   [routerLink]="['../register']">
       <mat-icon>create</mat-icon>
-      <span>Registar Usuario</span>
-  </button></span>
+      <span> Registar Usuario</span>
+  </a></span>
   </form>
   </mat-card>

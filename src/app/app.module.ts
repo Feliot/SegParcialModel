@@ -1,26 +1,39 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
+import { MaterialModule } from './material';
+import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './componets/nav-bar/nav-bar.component';
-import { LoginComponent } from './pages/login/login.component';
-import { HomeComponent } from './pages/home/home.component';
 import { MateriasComponent } from './pages/materias/materias.component';
 import { AltaUsuarioComponent } from './pages/alta-usuario/alta-usuario.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PagesModule } from './pages/pages.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UtilmoduleModule } from './utils/utilmodule.module'
+//Firebase
+import { AngularFireAuthModule} from '@angular/fire/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
-    LoginComponent,
-    HomeComponent,
+    routingComponents,
     MateriasComponent,
-    AltaUsuarioComponent
+    AltaUsuarioComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MaterialModule,
+    BrowserAnimationsModule,
+    PagesModule,
+    UtilmoduleModule,
+    FormsModule,
+     ReactiveFormsModule,
+     AngularFireAuthModule,
+     AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

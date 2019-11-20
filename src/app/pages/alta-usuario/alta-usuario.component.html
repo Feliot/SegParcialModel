@@ -1,1 +1,11 @@
-<p>alta-usuario works!</p>
+<h3>alta-usuario works!</h3>
+<mat-card>
+<mat-form-field>
+    <mat-label>Tipo de usario</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let tipousuario of tiposdeusuarios" [value]="tipousuario">
+        {{tipousuario}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-card>

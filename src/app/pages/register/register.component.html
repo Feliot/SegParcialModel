@@ -1,0 +1,33 @@
+
+<mat-card class="example-card">
+    <form class="example-form">
+    <mat-form-field class="example-full-width">
+            <input matInput placeholder="Ingresar con:" disabled value="Email y Contraseña">
+    </mat-form-field>
+    <br> 
+       <!--  <input  placeholder="email" type="text" id="email1"  [(ngModel)]="email" name="email" required> -->
+     <!--    <input  placeholder="password" type="password" [(ngModel)]="password" name="password" required> -->
+     <mat-form-field>
+            <input matInput placeholder="email"   [(ngModel)]="email" required name="email">
+    </mat-form-field> 
+    <br>   
+     <mat-form-field>
+                <input matInput placeholder="password"  type="password" [(ngModel)]="password" required name="password">
+    </mat-form-field>
+       <br> 
+    
+        <input type="file"  id="avatar" name="avatar"
+        accept="image/png, image/jpeg" (change)="onUpload($event)"> 
+ 
+<br>
+    <button mat-raised-button color="primary" (click)="onSubmitRegister()">
+        <span>Registar  </span><mat-icon>email</mat-icon></button>
+    <br> 
+    <span class="errormje">{{ msjerror }}</span> 
+     <br>
+    <span><button mat-button  [routerLink]="['../login']">
+        <mat-icon>Login</mat-icon>
+        <span>Volver a Login</span>
+    </button></span>
+    </form>
+    </mat-card>
