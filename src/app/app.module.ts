@@ -4,6 +4,8 @@ import { MaterialModule } from './material';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './componets/nav-bar/nav-bar.component';
+import { FormDatosComponent } from './componets/form-datos/form-datos.component';
+import { FilaComponent } from './componets/fila/fila.component';
 import { MateriasComponent } from './pages/materias/materias.component';
 import { AltaUsuarioComponent } from './pages/alta-usuario/alta-usuario.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -13,6 +15,7 @@ import { UtilmoduleModule } from './utils/utilmodule.module'
 //Firebase
 import { AngularFireAuthModule} from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { OutputAltaComponent } from './componets/output-alta/output-alta.component';
 
 
 @NgModule({
@@ -22,6 +25,9 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
     routingComponents,
     MateriasComponent,
     AltaUsuarioComponent,
+    FormDatosComponent,
+    FilaComponent,
+    OutputAltaComponent
   ],
   imports: [
     BrowserModule,

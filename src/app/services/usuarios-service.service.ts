@@ -15,14 +15,14 @@ export class UsuariosServiceService {
   constructor(public db: AngularFirestore) {
     /* this.usuarios = this.db.collection('usuarios').valueChanges(); */
     this.usuariosCollection = this.db.collection('usuarios');
-    /* 
+    
     this.usuarios = this.usuariosCollection.snapshotChanges().pipe(
       map(actions=> actions.map(a =>{
         const data= a.payload.doc.data() as Usuario;
         const id = a.payload.doc.id;
         return {id, ...data};
       })
-    ),); */
+    ),);
   }
 
   GetUsers(){
@@ -36,9 +36,9 @@ export class UsuariosServiceService {
           })
         }),)
     }
-    GetUsersFiltro(filtro: string ){
+    GetUsersFiltro(  filtro: string,  campo:string){
       //sacado de https://github.com/angular/angularfire/blob/master/docs/firestore/querying-collections.md
-      this.usuarios = this.db.collection('usuarios', ref => ref.where('id', '==', filtro))
+      this.usuarios = this.db.collection('usuarios', ref => ref.where(campo, '==', filtro))
       .snapshotChanges().pipe(map(actions=>{
         return actions.map(a =>{
           const data= a.payload.doc.data() as Usuario;
@@ -60,7 +60,9 @@ export class UsuariosServiceService {
       }
     }
     addUsuario(usuario: Usuario){
-        this.usuariosCollection.add(usuario);
+       /*  this.usuariosCollection.add(usuario); */
+        const param = JSON.parse(JSON.stringify(usuario));
+        this.usuariosCollection.add(param);
     }
     updateUsuario(usuario:Usuario){
       this.usuarioDoc= this.db.doc(`usuarios/${usuario.id}`);

@@ -27,15 +27,15 @@
             <mat-icon>logout</mat-icon>
             <span>Desloguearse</span>
           </button>
-          <button mat-menu-item [routerLink]="['detalle']" *ngIf="isLogin">
+          <button mat-menu-item [routerLink]="['alta-usuario']" *ngIf="isLogin">
             <mat-icon>details</mat-icon>
-            <span>Detalles</span>
+            <span>Administrador</span>
           </button>
           <button mat-menu-item [routerLink]="['usuarios']" *ngIf="isLogin">
             <mat-icon>person_add_disabled</mat-icon>
             <span>Usuarios</span>
           </button>
-        <button mat-menu-item [matMenuTriggerFor]="juegos" [routerLink]="['juegos']" *ngIf="isLogin">Juegos</button>
+<!--         <button mat-menu-item [matMenuTriggerFor]="juegos" [routerLink]="['juegos']" *ngIf="isLogin">Juegos</button>
         <mat-menu #juegos="matMenu" xPosition="before">
           <button mat-menu-item [routerLink]="['juegos/anagrama']">
             <mat-icon>videogame_asset</mat-icon>
@@ -49,8 +49,8 @@
             <mat-icon>my_location</mat-icon>
             <span>Mapa del tesoro</span>
           </button>
-      </mat-menu>
-        <button mat-menu-item [matMenuTriggerFor]="cliente" [routerLink]="['cliente']" *ngIf="isLogin">Cliente</button>
+      </mat-menu> -->
+  <!--       <button mat-menu-item [matMenuTriggerFor]="cliente" [routerLink]="['cliente']" *ngIf="isLogin">Cliente</button>
         <mat-menu #cliente="matMenu" xPosition="before">
           <button mat-menu-item [routerLink]="['cliente/clienteLogin']">
             <mat-icon>Login</mat-icon>
@@ -60,9 +60,8 @@
             <mat-icon>create</mat-icon>
             <span>Crear Cliente</span>
           </button>
-      </mat-menu>
+      </mat-menu> -->
     </mat-menu>
-    
 
     </mat-toolbar-row>
   </mat-toolbar>

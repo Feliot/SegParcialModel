@@ -14,6 +14,7 @@ export class UserServiceService {
   private miObservable = new BehaviorSubject<string>('');
   miObservable$ = this.miObservable.asObservable();
   private user: Usuario;
+
   constructor(
     // IMPORETANTE: para poder usar AngularFireAuth hay que importar
     // el modulo AngularFireAuthModule en app.module
@@ -71,6 +72,16 @@ register(email: string , password: string) {
         error => reject(error));
   });
   }
+
+  registrarSinLoguear(email: string , password: string) {
+    // VERIFICA usuario y retornar el jwt
+    return new Promise((resolve, reject) => {
+       this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+      .then(userData => resolve(userData) ,
+        error => reject(error));
+  });
+  }
+
 
   generarToken() {
 /*     const email = this.afAuth.auth.currentUser.email;

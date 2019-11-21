@@ -1,11 +1,41 @@
 <h3>alta-usuario works!</h3>
 <mat-card>
-<mat-form-field>
-    <mat-label>Tipo de usario</mat-label>
-    <mat-select>
-      <mat-option *ngFor="let tipousuario of tiposdeusuarios" [value]="tipousuario">
-        {{tipousuario}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+    <form class="example-form">
+        <mat-form-field class="example-full-width">
+                <input matInput placeholder="Ingresar con:" disabled value="Email y Contraseña">
+        </mat-form-field>
+        <br> 
+         <mat-form-field>
+                <input matInput placeholder="email"   [(ngModel)]="user.email" required name="email">
+        </mat-form-field> 
+        <br>   
+         <mat-form-field>
+                    <input matInput placeholder="password"  type="password" [(ngModel)]="user.clave" required name="clave">
+        </mat-form-field>
+           <br> 
+           <mat-form-field>
+              <mat-label>Tipo de usario</mat-label>
+              <mat-select [(ngModel)]="user.tipo" name="tipo">
+                <mat-option *ngFor="let tipousuario of tiposdeusuarios" [value]="tipousuario" >
+                  {{tipousuario}}
+                </mat-option>
+              </mat-select>
+      </mat-form-field>
+      <br>
+            <input type="file"  id="avatar" name="avatar"
+            accept="image/png, image/jpeg" (change)="onUpload($event)"> 
+
+     
+    <br>
+        <button mat-raised-button color="primary" (click)="onSubmitRegister()">
+            <span>Registar  </span><mat-icon>email</mat-icon></button>
+        <br> 
+        <span class="errormje">{{ msjerror }}</span> 
+         <br>
+        <span><button mat-button  [routerLink]="['../login']">
+            <mat-icon>Login</mat-icon>
+            <span>Volver a Login</span>
+        </button></span>
+ 
+</form>
 </mat-card>
