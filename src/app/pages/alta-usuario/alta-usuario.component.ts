@@ -36,10 +36,19 @@ export class AltaUsuarioComponent implements OnInit {
 
 this.miAuth.registrarSinLoguear(this.user.email, this.user.clave) 
     .then(res => {
-      console.log('logueando, yendo a casa', this.urlImage);
-      this.sUsers.addUsuario(this.user);
-      /* this.authRout.navigate(['/home']); */
-    })
+     
+        this.miAuth.getAuth().subscribe(user => {this.user.id = user.uid
+          console.log('logueando, yendo a casa', this.urlImage, this.user);
+        console.log(this.miAuth.getUser())
+        this.sUsers.addUsuario(this.user)
+        this.authRout.navigate(['/home']); 
+        })
+      }
+      )
+
+
+      
+   
     .catch( err => this.msjerror = err );
 }
 onUpload(e){

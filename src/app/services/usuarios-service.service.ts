@@ -12,6 +12,7 @@ export class UsuariosServiceService {
   usuarios: Observable<Usuario[]>;
   usuarioDoc: AngularFirestoreDocument<Usuario>;
   user: Usuario = {id:'1'};
+  usuariosAux: Usuario[];
   constructor(public db: AngularFirestore) {
     /* this.usuarios = this.db.collection('usuarios').valueChanges(); */
     this.usuariosCollection = this.db.collection('usuarios');
@@ -37,21 +38,35 @@ export class UsuariosServiceService {
         }),)
     }
     GetUsersFiltro(  filtro: string,  campo:string){
+      console.log(filtro, campo);
       //sacado de https://github.com/angular/angularfire/blob/master/docs/firestore/querying-collections.md
       this.usuarios = this.db.collection('usuarios', ref => ref.where(campo, '==', filtro))
       .snapshotChanges().pipe(map(actions=>{
         return actions.map(a =>{
           const data= a.payload.doc.data() as Usuario;
           data.id = a.payload.doc.id;
+          console.log(data.id);
           return data;
         })
       }),)
       }
+   DevolverUsuarioFiltro(filtro: string,  campo:string){
+        return new Promise((resolve, reject) => {
+      resolve(this.GetUsersFiltro(filtro, campo)), err=> reject(err)})
+      }
 
 
     getUsuariosSC(){
-      return this.usuarios;
+      return new Promise((resolve, reject) => {
+        resolve(this.usuarios.subscribe( usuario=>{this.usuariosAux = usuario
+        console.log(usuario, this.usuariosAux );
+        } ))
+        , err=> reject(err)})
+      }
+    getAuxUsers(){
+      return this.usuariosAux;
     }
+      
     deleteUsuario(usuario: Usuario){
       if (confirm("¿Realmente desea eliminar el Usuario?")){
       this.usuarioDoc= this.db.doc(`usuarios/${usuario.id}`);
@@ -62,6 +77,7 @@ export class UsuariosServiceService {
     addUsuario(usuario: Usuario){
        /*  this.usuariosCollection.add(usuario); */
         const param = JSON.parse(JSON.stringify(usuario));
+        console.log(param);
         this.usuariosCollection.add(param);
     }
     updateUsuario(usuario:Usuario){

@@ -6,12 +6,15 @@ import { UserServiceService } from '../services/user-service.service'
 import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { userInfo } from 'os';
+import { UsuariosServiceService } from '../services/usuarios-service.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router, private usuarioService: UserServiceService, private afsAuth: AngularFireAuth) { 
+  constructor(private router: Router, private usuarioService: UserServiceService,
+     private usersS : UsuariosServiceService,
+    private afsAuth: AngularFireAuth) { 
   }
  
   canActivate(
@@ -25,8 +28,15 @@ export class AuthGuard implements CanActivate {
           this.router.navigate(['/login']);
         }
         else{
-          this.usuarioService.reCargarusuario();
-          console.log(this.usuarioService.getUser());
+       /*    this.usuarioService.reCargarusuario(); */
+          /* console.log('usuario',this.usuarioService.getUser()); */
+          this.usuarioService.recargarYDevolverUsuario().then( e =>
+           this.usersS.DevolverUsuarioFiltro(this.usuarioService.getUser().id, 'id')).then( r =>
+            this.usersS.getUsuariosSC()).then( rr =>{
+              console.log('usuario', this.usersS.getAuxUsers()) 
+            }).catch(err => console.log(err))
+          
+          
         }
       }));
 
